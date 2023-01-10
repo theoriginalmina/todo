@@ -66,3 +66,20 @@ exports.getTodo = (req, res) => {
 				.json({ error: "book not found", message: err.message });
 		});
 };
+
+exports.getAllTodo = (req, res) => {
+	const { userId } = req.params;
+
+	Todo.find({ userId })
+		.then((todos) => {
+			if (todos.length === 0) {
+				return res.status(404).json({
+					message: "No todos were found",
+				});
+			}
+			return res.json(todos);
+		})
+		.catch((err) => {
+			return res.status(404).json({ message: err.message });
+		});
+};

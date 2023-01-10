@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const helemt = require("helmet");
 
-// routes
 const todo = require("./routes/todo");
 
 const app = express();
@@ -26,4 +25,5 @@ mongoose
 		console.log(err);
 	});
 
+// routes
 app.use("/api/v1/todo", todo);
